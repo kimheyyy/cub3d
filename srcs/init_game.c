@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: seoklee <seoklee@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:51:19 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/04 20:51:12 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/04 23:59:01 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ void	test(t_map *m, t_player *p)
 	// m->ceiling.b = 0;
 	p->pos_x = 11.5;
 	p->pos_y = 26.5;
-	p->dir_x = 0;
-	p->dir_y = 1;
-	p->plane_x = 0.66;
-	p->plane_y = 0;
+	p->dir_x = -1;
+	p->dir_y = 0;
+	p->plane_x = 0;
+	p->plane_y = 0.66;
 }
 
 void	set_rgb(t_color *color, char *rgb)
@@ -140,6 +140,7 @@ void	set_map_content(t_map *map, t_list *head)
 	while (head)
 	{
 		map->map[i++] = ft_strdup(head->content);
+		free(head->content);
 		head = head->next;
 		printf("%s\n", map->map[i - 1]);
 	}
@@ -195,7 +196,9 @@ void	init_game(t_game *game, char *file_path)
 	if (ft_strncmp(file_path + ft_strlen(file_path) - 4, ".cub", 5) != 0)
 		exit_err("Wrong extension");
 	init_map(game, file_path);
+
 	test(&(game->map), &(game->player));
+
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, MAP_WIDTH, MAP_HEIGHT, "cub3D");
 	load_texture(game, &(game->walls[NO]), game->map.wall_no);
