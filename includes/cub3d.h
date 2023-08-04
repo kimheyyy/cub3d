@@ -6,7 +6,7 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:48:13 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/04 16:50:37 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/04 20:31:07 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,14 @@ typedef struct s_ray {
 int		main_loop(t_game *game);
 
 //init game
-void	init_game(char *file_path, t_game *game);
-void	init_map(t_map *map, t_player *player, char *file_path);
+void	init_game(t_game *game, char *file_path);
+void	init_map(t_game *game, char *file_path);
+void	init_map_element(t_map *map, int fd);
+void	init_map_content(t_map *map, int fd);
+void	set_map_element(t_map *map, char *line);
+void	set_rgb(t_color *color, char *rgb);
+void	load_texture(t_game *game, t_img *wall, char *file_path);
+void	init_buf(t_game *game);
 
 //exit
 void	exit_err(char *str);
@@ -137,5 +143,6 @@ void	draw_wall(t_game *game);
 
 //utils
 void	*ft_malloc(size_t count, size_t size);
+void	free_strs(char **strs);
 
 #endif

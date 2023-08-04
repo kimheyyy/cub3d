@@ -6,7 +6,7 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 21:59:51 by seoklee           #+#    #+#             */
-/*   Updated: 2023/05/23 18:11:08 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/04 19:26:22 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ int	ft_atoi(const char *str)
 	if (result > MAX_ULL && sign == 1)
 		return (-1);
 	else if (result > MIN_ULL && sign == -1)
-		return (0);
+		return (-1);
 	return ((long long)result * sign);
 }

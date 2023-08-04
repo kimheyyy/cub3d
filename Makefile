@@ -26,7 +26,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -I $(INCS_DIR) -c $? -o $@
 
 $(NAME): $(OBJS)
-	make -C $(LIB_DIR)
+	make bonus -C $(LIB_DIR)
 	make -C $(GNL_DIR)
 	make -C $(MLX_DIR)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L $(MLX_DIR) $(MLX_FLAGS) -L $(GNL_DIR) -lgnl -L $(LIB_DIR) -lft

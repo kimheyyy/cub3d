@@ -6,7 +6,7 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:48:01 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/04 16:20:35 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/04 20:28:51 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		exit_err("Invalid arguments");
-	init_game(argv[1], &game);
+	init_game(&game, argv[1]);
 	game.img = mlx_new_image(game.mlx, MAP_WIDTH, MAP_HEIGHT);
 	game.data = (int *)mlx_get_data_addr(game.img, &bpp, &size_l, &endian);
 	mlx_hook(game.win, 17, 0, &exit_game, &game);
