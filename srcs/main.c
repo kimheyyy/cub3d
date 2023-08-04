@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoklee <seoklee@student.42.kr>            +#+  +:+       +#+        */
+/*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:48:01 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/03 22:26:44 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/04 16:20:35 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	main_loop(t_game *game)
 {
+	set_background(game);
 	calculate(game);
-	draw(game);
+	draw_wall(game);
 	return (0);
 }
 

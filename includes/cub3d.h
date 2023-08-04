@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoklee <seoklee@student.42.kr>            +#+  +:+       +#+        */
+/*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:48:13 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/03 22:26:49 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/04 16:50:37 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@
 # define SO 1
 # define WE 2
 # define EA 3
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_W 13
+# define KEY_ESC 53
 # define MOVE_SPEED 0.2
 # define ROT_SPEED 0.2
 
@@ -102,8 +107,12 @@ typedef struct s_ray {
 	int		color;
 }	t_ray;
 
+//main
+int		main_loop(t_game *game);
+
 //init game
 void	init_game(char *file_path, t_game *game);
+void	init_map(t_map *map, t_player *player, char *file_path);
 
 //exit
 void	exit_err(char *str);
@@ -123,7 +132,8 @@ void	set_texture(t_ray *ray, t_player *player);
 void	set_y_color(t_ray *ray, t_game *game, int x);
 
 //draw
-void	draw(t_game *game);
+void	set_background(t_game *game);
+void	draw_wall(t_game *game);
 
 //utils
 void	*ft_malloc(size_t count, size_t size);
