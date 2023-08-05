@@ -6,13 +6,13 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:06:19 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/04 20:28:11 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/05 17:00:19 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_ray(t_ray *ray, t_game *game, t_player *player, int x)
+static void	init_ray(t_ray *ray, t_game *game, t_player *player, int x)
 {
 	ray->cam_x = (2 * x / (double)MAP_WIDTH) - 1;
 	ray->ray_x = game->player.dir_x + player->plane_x * ray->cam_x;
@@ -25,7 +25,7 @@ void	init_ray(t_ray *ray, t_game *game, t_player *player, int x)
 	init_step(ray, player);
 }
 
-void	init_step(t_ray *ray, t_player *player)
+static void	init_step(t_ray *ray, t_player *player)
 {
 	if (ray->ray_x < 0)
 	{
@@ -49,7 +49,7 @@ void	init_step(t_ray *ray, t_player *player)
 	}
 }
 
-void	check_hit(t_ray *ray, t_game *game)
+static void	check_hit(t_ray *ray, t_game *game)
 {
 	while (ray->hit == 0)
 	{
@@ -65,73 +65,19 @@ void	check_hit(t_ray *ray, t_game *game)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (game->map.map[ray->map_x][ray->map_y] == '1')
+		if (game->map.map[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}
 }
 
-void	set_perp_wall_dist(t_ray *ray, t_player *player)
+static void	set_perp_wall_dist(t_ray *ray, t_player *player)
 {
 	if (ray->side == 0)
-		ray->perp_wall_dist = (ray->map_x - player->pos_x + (1 - ray->step_x) / 2) / ray->ray_x;
+		ray->perp_wall_dist = (ray->map_x - player->pos_x + \
+							(1 - ray->step_x) / 2) / ray->ray_x;
 	else
-		ray->perp_wall_dist = (ray->map_y - player->pos_y + (1 - ray->step_y) / 2) / ray->ray_y;
-}
-
-void	set_draw_start_end(t_ray *ray)
-{
-	ray->line_height = (int)(MAP_HEIGHT / ray->perp_wall_dist);
-	ray->draw_start = -ray->line_height / 2 + MAP_HEIGHT / 2;
-	if (ray->draw_start < 0)
-		ray->draw_start = 0;
-	ray->draw_end = ray->line_height / 2 + MAP_HEIGHT / 2;
-	if (ray->draw_end >= MAP_HEIGHT)
-		ray->draw_end = MAP_HEIGHT - 1;
-}
-
-void	set_texture(t_ray *ray, t_player *player)
-{
-	if (ray->side == 0)
-		ray->wall_x = player->pos_y + ray->perp_wall_dist * ray->ray_y;
-	else
-		ray->wall_x = player->pos_x + ray->perp_wall_dist * ray->ray_x;
-	ray->wall_x -= floor(ray->wall_x);
-	ray->tex_x = (int)(ray->wall_x * 64.0);
-	if (ray->side == 0 && ray->ray_x > 0)
-		ray->tex_x = 64 - ray->tex_x - 1;
-	if (ray->side == 1 && ray->ray_y < 0)
-		ray->tex_x = 64 - ray->tex_x - 1;
-	if (ray->side == 0)
-	{
-		ray->tex_dir = NO;
-		if (ray->ray_x > 0)
-			ray->tex_dir = SO;
-	}
-	if (ray->side == 1)
-	{
-		ray->tex_dir = WE;
-		if (ray->ray_y > 0)
-			ray->tex_dir = EA;
-	}
-}
-
-void	set_y_color(t_ray *ray, t_game *game, int x)
-{
-	int	y;
-
-	ray->step = 64.0 / ray->line_height;
-	ray->tex_pos = (ray->draw_start - MAP_HEIGHT / 2 + ray->line_height / 2) * ray->step;
-	y = ray->draw_start;
-	while (y < ray->draw_end)
-	{
-		ray->tex_y = (int)ray->tex_pos & 63;
-		ray->tex_pos += ray->step;
-		ray->color = game->walls[ray->tex_dir].addr[64 * ray->tex_y + ray->tex_x];
-		if (ray->side == 1)
-			ray->color = (ray->color >> 1) & 8355711;
-		game->buf[y][x] = ray->color;
-		++y;
-	}
+		ray->perp_wall_dist = (ray->map_y - player->pos_y + \
+							(1 - ray->step_y) / 2) / ray->ray_y;
 }
 
 void	calculate(t_game *game)

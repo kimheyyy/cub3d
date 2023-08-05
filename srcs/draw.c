@@ -6,15 +6,15 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:09:31 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/04 20:28:15 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/05 17:00:56 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		get_color(t_color color)
+static int	get_color(t_color color)
 {
-	int res;
+	int	res;
 
 	res = color.r << 16;
 	res += color.g << 8;

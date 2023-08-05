@@ -6,13 +6,13 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:48:01 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/04 20:28:51 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/05 16:55:28 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main_loop(t_game *game)
+static int	main_loop(t_game *game)
 {
 	set_background(game);
 	calculate(game);

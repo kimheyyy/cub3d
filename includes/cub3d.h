@@ -6,7 +6,7 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:48:13 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/04 20:31:07 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/05 17:01:12 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 # define KEY_D 2
 # define KEY_W 13
 # define KEY_ESC 53
-# define MOVE_SPEED 0.2
-# define ROT_SPEED 0.2
+# define MOVE_SPEED 0.3
+# define ROT_SPEED 0.314159
 
 typedef struct s_color {
 	int	r;
@@ -107,18 +107,18 @@ typedef struct s_ray {
 	int		color;
 }	t_ray;
 
-//main
-int		main_loop(t_game *game);
-
 //init game
 void	init_game(t_game *game, char *file_path);
+
+//init map
 void	init_map(t_game *game, char *file_path);
-void	init_map_element(t_map *map, int fd);
-void	init_map_content(t_map *map, int fd);
-void	set_map_element(t_map *map, char *line);
 void	set_rgb(t_color *color, char *rgb);
-void	load_texture(t_game *game, t_img *wall, char *file_path);
-void	init_buf(t_game *game);
+
+//validate
+void	validate_map(t_player *player, char **map);
+
+//direction
+void	set_direction(t_player *player, double x, double y, char dir);
 
 //exit
 void	exit_err(char *str);
@@ -129,17 +129,15 @@ int		key_hook(int key, t_game *game);
 
 //calculate
 void	calculate(t_game *game);
-void	init_ray(t_ray *ray, t_game *game, t_player *player, int x);
-void	init_step(t_ray *ray, t_player *player);
-void	check_hit(t_ray *ray, t_game *game);
-void	set_perp_wall_dist(t_ray *ray, t_player *player);
+
+//calculate2
 void	set_draw_start_end(t_ray *ray);
 void	set_texture(t_ray *ray, t_player *player);
 void	set_y_color(t_ray *ray, t_game *game, int x);
 
 //draw
-void	set_background(t_game *game);
 void	draw_wall(t_game *game);
+void	set_background(t_game *game);
 
 //utils
 void	*ft_malloc(size_t count, size_t size);
