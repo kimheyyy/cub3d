@@ -6,24 +6,11 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:06:19 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/05 17:00:19 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/05 17:34:10 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	init_ray(t_ray *ray, t_game *game, t_player *player, int x)
-{
-	ray->cam_x = (2 * x / (double)MAP_WIDTH) - 1;
-	ray->ray_x = game->player.dir_x + player->plane_x * ray->cam_x;
-	ray->ray_y = game->player.dir_y + player->plane_y * ray->cam_x;
-	ray->map_x = (int)(player->pos_x);
-	ray->map_y = (int)(player->pos_y);
-	ray->delta_x = fabs(1 / ray->ray_x);
-	ray->delta_y = fabs(1 / ray->ray_y);
-	ray->hit = 0;
-	init_step(ray, player);
-}
 
 static void	init_step(t_ray *ray, t_player *player)
 {
@@ -47,6 +34,19 @@ static void	init_step(t_ray *ray, t_player *player)
 		ray->step_y = 1;
 		ray->side_y = (ray->map_y + 1.0 - player->pos_y) * ray->delta_y;
 	}
+}
+
+static void	init_ray(t_ray *ray, t_game *game, t_player *player, int x)
+{
+	ray->cam_x = (2 * x / (double)MAP_WIDTH) - 1;
+	ray->ray_x = game->player.dir_x + player->plane_x * ray->cam_x;
+	ray->ray_y = game->player.dir_y + player->plane_y * ray->cam_x;
+	ray->map_x = (int)(player->pos_x);
+	ray->map_y = (int)(player->pos_y);
+	ray->delta_x = fabs(1 / ray->ray_x);
+	ray->delta_y = fabs(1 / ray->ray_y);
+	ray->hit = 0;
+	init_step(ray, player);
 }
 
 static void	check_hit(t_ray *ray, t_game *game)
