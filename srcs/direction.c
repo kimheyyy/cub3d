@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   direction.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: seoklee <seoklee@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 16:00:29 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/05 16:59:07 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/07 14:26:48 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	set_direction(t_player *player, double x, double y, char dir)
 
 	++count;
 	if (count != 1)
-		exit_err("Too many players");
+		exit_err("Invalid map file");
 	if (dir == 'N')
 		set_north(player, x, y);
 	else if (dir == 'S')

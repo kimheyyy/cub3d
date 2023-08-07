@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: seoklee <seoklee@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 15:42:02 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/05 16:53:56 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/07 15:09:45 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_value(char c)
 {
 	if (c != '1' && c != '0' && c != 'N' && \
 		c != 'S' && c != 'W' && c != 'E' && c != ' ')
-		exit_err("Invalid map");
+		exit_err("Invalid map file");
 }
 
 void	check_border(char **map, int len_y)
@@ -34,7 +34,7 @@ void	check_border(char **map, int len_y)
 			if (map[i][j] != '1' && map[i][j] != ' ')
 				if ((i == 0 || i == len_y - 1) || \
 					(j == 0 || j == (int)ft_strlen(map[i]) - 1))
-					exit_err("Invalid map");
+					exit_err("Invalid map file");
 		}
 	}
 }
@@ -44,10 +44,10 @@ void	validate_map(t_player *player, char **map)
 	int	i;
 	int	j;
 
-	i = -1;
+	i = 0;
 	while (map[++i + 1])
 	{
-		j = -1;
+		j = 0;
 		while (map[i][++j + 1])
 		{
 			if (map[i][j] == 'N' || map[i][j] == 'S' || \
@@ -56,7 +56,7 @@ void	validate_map(t_player *player, char **map)
 			if (map[i][j] == '0' && (map[i - 1][j] == ' ' || \
 				map[i + 1][j] == ' ' || map[i][j - 1] == ' ' || \
 				map[i][j + 1] == ' '))
-				exit_err("Invalid map");
+				exit_err("Invalid map file");
 		}
 	}
 	check_border(map, i + 1);
