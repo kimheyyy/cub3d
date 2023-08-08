@@ -6,7 +6,7 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 18:49:26 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/05 16:59:49 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/08 14:47:53 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,24 +77,18 @@ static void	turn_right(t_player *player)
 int	key_hook(int key, t_game *game)
 {
 	if (key == KEY_W)
-	{
 		move_forward(&(game->map), &(game->player));
-	}
 	else if (key == KEY_S)
-	{
 		move_back(&(game->map), &(game->player));
-	}
 	else if (key == KEY_A)
-	{
-		turn_left(&(game->player));
-	}
+		move_left(&(game->map), &(game->player));
 	else if (key == KEY_D)
-	{
+		move_right(&(game->map), &(game->player));
+	else if (key == KEY_LEFT)
+		turn_left(&(game->player));
+	else if (key == KEY_RIGHT)
 		turn_right(&(game->player));
-	}
 	else if (key == KEY_ESC)
-	{
 		exit_game(game);
-	}
 	return (0);
 }

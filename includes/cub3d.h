@@ -6,7 +6,7 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:48:13 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/08 14:29:02 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/08 14:43:41 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # define KEY_S 1
 # define KEY_D 2
 # define KEY_W 13
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
 # define KEY_ESC 53
 # define MOVE_SPEED 0.15
 # define ROT_SPEED 0.15707963268
@@ -126,6 +128,10 @@ int		exit_game(t_game *game);
 
 //key hook
 int		key_hook(int key, t_game *game);
+
+//key hook2
+void	move_left(t_map *map, t_player *player);
+void	move_right(t_map *map, t_player *player);
 
 //calculate
 void	calculate(t_game *game);

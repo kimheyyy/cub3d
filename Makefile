@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seoklee <seoklee@student.42.kr>            +#+  +:+       +#+         #
+#    By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/05 17:01:47 by seoklee           #+#    #+#              #
-#    Updated: 2023/08/07 14:44:02 by seoklee          ###   ########.fr        #
+#    Updated: 2023/08/08 14:42:39 by seoklee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS		=	$(SRCS_DIR)main.c \
 				$(SRCS_DIR)direction.c \
 				$(SRCS_DIR)exit.c \
 				$(SRCS_DIR)key_hook.c \
+				$(SRCS_DIR)key_hook2.c \
 				$(SRCS_DIR)calculate.c \
 				$(SRCS_DIR)calculate2.c \
 				$(SRCS_DIR)draw.c \
