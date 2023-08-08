@@ -6,7 +6,7 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:48:13 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/05 17:01:12 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/08 14:29:02 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 # define KEY_D 2
 # define KEY_W 13
 # define KEY_ESC 53
-# define MOVE_SPEED 0.3
-# define ROT_SPEED 0.314159
+# define MOVE_SPEED 0.15
+# define ROT_SPEED 0.15707963268
 
 typedef struct s_color {
 	int	r;
