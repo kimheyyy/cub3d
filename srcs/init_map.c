@@ -6,7 +6,7 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 16:51:19 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/08 15:23:15 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/08 16:21:59 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	init_map(t_game *game, char *file_path)
 	game->map.wall_ea = NULL;
 	game->map.floor.r = -1;
 	game->map.ceiling.r = -1;
+	game->player.pos_x = -1;
 	init_map_element(&(game->map), fd);
 	init_map_content(&(game->map), fd);
 	validate_map(&(game->player), game->map.map);
