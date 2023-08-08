@@ -6,7 +6,7 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 16:46:24 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/05 16:49:14 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/08 15:59:05 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	set_texture(t_ray *ray, t_player *player)
 	else
 		ray->wall_x = player->pos_x + ray->perp_wall_dist * ray->ray_x;
 	ray->wall_x -= floor(ray->wall_x);
-	ray->tex_x = (int)(ray->wall_x * 64.0);
+	ray->tex_x = (int)(ray->wall_x * (double)TEXTURE_HEIGHT);
 	if (ray->side == 0 && ray->ray_x < 0)
 		ray->tex_x = 64 - ray->tex_x - 1;
 	if (ray->side == 1 && ray->ray_y > 0)

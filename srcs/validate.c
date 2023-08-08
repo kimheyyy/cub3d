@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoklee <seoklee@student.42.kr>            +#+  +:+       +#+        */
+/*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 15:42:02 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/07 15:09:45 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/08 15:14:54 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	validate_map(t_player *player, char **map)
 				set_direction(player, (double)j, (double)i, map[i][j]);
 			if (map[i][j] == '0' && (map[i - 1][j] == ' ' || \
 				map[i + 1][j] == ' ' || map[i][j - 1] == ' ' || \
-				map[i][j + 1] == ' '))
+				map[i][j + 1] == ' ')) // 플레이어도 체크
 				exit_err("Invalid map file");
 		}
 	}

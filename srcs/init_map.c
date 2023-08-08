@@ -6,7 +6,7 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 16:51:19 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/05 16:56:34 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/08 15:23:15 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	set_map_element(t_map *map, char *line)
 	char	**strs;
 
 	strs = ft_split(line, ' ');
-	if (!strs || !strs[0] || !strs[1])
+	if (!strs || !strs[0] || !strs[1] || strs[2])
 		exit_err("Invalid map file");
 	if (ft_strncmp(strs[0], "NO", 3) == 0 && !map->wall_no)
 		map->wall_no = ft_strdup(strs[1]);

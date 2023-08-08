@@ -6,7 +6,7 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:48:13 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/08 14:43:41 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/08 15:58:37 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define SO 1
 # define WE 2
 # define EA 3
+# define TEXTURE_HEIGHT 64
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
@@ -111,10 +112,10 @@ typedef struct s_ray {
 
 //init game
 void	init_game(t_game *game, char *file_path);
+void	set_rgb(t_color *color, char *rgb);
 
 //init map
 void	init_map(t_game *game, char *file_path);
-void	set_rgb(t_color *color, char *rgb);
 
 //validate
 void	validate_map(t_player *player, char **map);
