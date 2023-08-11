@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   direction.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoklee <seoklee@student.42.kr>            +#+  +:+       +#+        */
+/*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 16:00:29 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/07 14:26:48 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/11 12:37:53 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	set_north(t_player *player, double x, double y)
 	player->pos_x = x + 0.5;
 	player->pos_y = y + 0.5;
 	player->dir_x = 0;
-	player->dir_y = -1;
+	player->dir_y = -1.01;
 	player->plane_x = 0.66;
 	player->plane_y = 0;
 }
@@ -27,7 +27,7 @@ static void	set_south(t_player *player, double x, double y)
 	player->pos_x = x + 0.5;
 	player->pos_y = y + 0.5;
 	player->dir_x = 0;
-	player->dir_y = 1;
+	player->dir_y = 1.01;
 	player->plane_x = -0.66;
 	player->plane_y = 0;
 }
@@ -36,7 +36,7 @@ static void	set_west(t_player *player, double x, double y)
 {
 	player->pos_x = x + 0.5;
 	player->pos_y = y + 0.5;
-	player->dir_x = -1;
+	player->dir_x = -1.01;
 	player->dir_y = 0;
 	player->plane_x = 0;
 	player->plane_y = -0.66;
@@ -46,7 +46,7 @@ static void	set_east(t_player *player, double x, double y)
 {
 	player->pos_x = x + 0.5;
 	player->pos_y = y + 0.5;
-	player->dir_x = 1;
+	player->dir_x = 1.01;
 	player->dir_y = 0;
 	player->plane_x = 0;
 	player->plane_y = 0.66;

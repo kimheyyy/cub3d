@@ -6,7 +6,7 @@
 /*   By: seoklee <seoklee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 16:46:24 by seoklee           #+#    #+#             */
-/*   Updated: 2023/08/08 15:59:05 by seoklee          ###   ########.fr       */
+/*   Updated: 2023/08/11 12:26:54 by seoklee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	set_texture(t_ray *ray, t_player *player)
 	ray->wall_x -= floor(ray->wall_x);
 	ray->tex_x = (int)(ray->wall_x * (double)TEXTURE_HEIGHT);
 	if (ray->side == 0 && ray->ray_x < 0)
-		ray->tex_x = 64 - ray->tex_x - 1;
+		ray->tex_x = TEXTURE_HEIGHT - ray->tex_x - 1;
 	if (ray->side == 1 && ray->ray_y > 0)
-		ray->tex_x = 64 - ray->tex_x - 1;
+		ray->tex_x = TEXTURE_HEIGHT - ray->tex_x - 1;
 	if (ray->side == 0)
 	{
 		ray->tex_dir = EA;
@@ -53,16 +53,16 @@ void	set_y_color(t_ray *ray, t_game *game, int x)
 {
 	int	y;
 
-	ray->step = 64.0 / ray->line_height;
+	ray->step = (double)TEXTURE_HEIGHT / ray->line_height;
 	ray->tex_pos = (ray->draw_start - MAP_HEIGHT / \
 				2 + ray->line_height / 2) * ray->step;
 	y = ray->draw_start;
 	while (y < ray->draw_end)
 	{
-		ray->tex_y = (int)ray->tex_pos & 63;
+		ray->tex_y = (int)ray->tex_pos & (TEXTURE_HEIGHT - 1);
 		ray->tex_pos += ray->step;
-		ray->color = game->walls[ray->tex_dir].\
-					addr[64 * ray->tex_y + ray->tex_x];
+		ray->color = game->walls[ray->tex_dir]. \
+				addr[TEXTURE_HEIGHT * ray->tex_y + ray->tex_x];
 		if (ray->side == 0)
 			ray->color = (ray->color >> 1) & 8355711;
 		game->buf[y][x] = ray->color;
